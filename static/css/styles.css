@@ -1,0 +1,842 @@
+/* GLOBAL STYLES */
+:root {
+    --primary-color: #0d6efd;
+    --secondary-color: #6c757d;
+    --accent-color: #ffc107;
+    --dark-color: #212529;
+    --light-color: #f8f9fa;
+    --success-color: #198754;
+    --info-color: #0dcaf0;
+    --warning-color: #ffc107;
+    --danger-color: #dc3545;
+    --font-main: 'Roboto', sans-serif;
+    --font-headings: 'Montserrat', sans-serif;
+    --transition-speed: 0.3s;
+}
+
+body {
+    font-family: var(--font-main);
+    color: var(--dark-color);
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+    background-color: #f5f7fa;
+}
+
+/* TYPOGRAPHY */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-headings);
+    font-weight: 700;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+h1 {
+    font-size: 3rem;
+    color: var(--primary-color);
+}
+
+h2 {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--primary-color);
+    margin-top: 3rem;
+}
+
+h3 {
+    font-size: 1.75rem;
+    color: var(--secondary-color);
+    margin-top: 2rem;
+}
+
+h4 {
+    font-size: 1.5rem;
+    color: var(--dark-color);
+}
+
+p {
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+/* LAYOUT */
+.content-container {
+    padding: 2rem;
+    position: relative;
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 300px;
+    padding: 2rem 1rem;
+    background-color: #fff;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+    z-index: 1000;
+    transition: transform var(--transition-speed);
+}
+
+.main-content {
+    margin-left: 300px;
+    padding: 2rem;
+    min-height: 100vh;
+    transition: margin var(--transition-speed);
+}
+
+/* SIDEBAR NAVIGATION */
+.nav-menu {
+    list-style: none;
+    padding: 0;
+    margin: 2rem 0;
+}
+
+.nav-menu li {
+    margin-bottom: 0.5rem;
+}
+
+.nav-menu a {
+    display: block;
+    padding: 0.75rem 1rem;
+    color: var(--dark-color);
+    text-decoration: none;
+    border-radius: 0.25rem;
+    transition: all var(--transition-speed);
+    font-weight: 500;
+}
+
+.nav-menu a:hover,
+.nav-menu a.active {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.nav-menu .submenu {
+    list-style: none;
+    padding-left: 1.5rem;
+    height: 0;
+    overflow: hidden;
+    transition: height var(--transition-speed);
+}
+
+.nav-menu .submenu.open {
+    height: auto;
+}
+
+.nav-menu .submenu a {
+    padding: 0.5rem 1rem;
+    font-weight: 400;
+}
+
+.menu-toggle {
+    display: none;
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(13, 110, 253, 0.8);
+    border-radius: 50%;
+    border: none;
+    color: white;
+    z-index: 1100;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+/* COMPONENTS */
+.card {
+    background-color: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+    height: 100%; /* Для выравнивания высоты в ряду */
+    display: flex;
+    flex-direction: column;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+.card-body {
+    flex: 1; /* Растянуть для равной высоты */
+    display: flex;
+    flex-direction: column;
+}
+
+.card-title {
+    position: relative;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.card-title::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 2px;
+    width: 50px;
+    background-color: var(--primary-color);
+    transition: width 0.3s ease;
+}
+
+.card:hover .card-title::after {
+    width: 100%;
+}
+
+.chart-container {
+    height: 400px;
+    margin-bottom: 2rem;
+    position: relative;
+    border-radius: 0.5rem;
+    background-color: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 2rem;
+}
+
+table th {
+    background-color: #e9ecef;
+    color: var(--dark-color);
+    padding: 1rem;
+    text-align: left;
+    font-weight: 700;
+}
+
+table td {
+    padding: 1rem;
+    border-bottom: 1px solid #dee2e6;
+}
+
+table tr:hover {
+    background-color: rgba(13, 110, 253, 0.1);
+}
+
+.sortable th {
+    cursor: pointer;
+    position: relative;
+    transition: background-color 0.3s;
+}
+
+.sortable th:hover {
+    background-color: #e2e6ea;
+}
+
+.sortable th::after {
+    content: "↕";
+    position: absolute;
+    right: 1rem;
+    color: rgba(33, 37, 41, 0.5);
+}
+
+.sortable th.sort-asc::after {
+    content: "↑";
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+.sortable th.sort-desc::after {
+    content: "↓";
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+.sortable th::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--primary-color);
+    transform: scaleX(0);
+    transition: transform 0.3s;
+}
+
+.sortable th:hover::before,
+.sortable th.sort-asc::before,
+.sortable th.sort-desc::before {
+    transform: scaleX(1);
+}
+
+/* BUTTONS & INTERACTIVE ELEMENTS */
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-secondary {
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+}
+
+.btn-accent {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+    color: var(--dark-color);
+}
+
+.scroll-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 50px;
+    height: 50px;
+    background-color: rgba(13, 110, 253, 0.9);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    opacity: 0;
+    transition: all var(--transition-speed);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    text-decoration: none;
+    transform: scale(0.9);
+}
+
+.scroll-top.visible {
+    opacity: 1;
+}
+
+.scroll-top:hover, .scroll-top:focus {
+    transform: scale(1.1);
+    background-color: var(--primary-color);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.scroll-top::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: rgba(13, 110, 253, 0.3);
+    animation: pulse 2s infinite;
+    z-index: -1;
+    opacity: 0;
+}
+
+.scroll-top.visible::before {
+    opacity: 1;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+    70% {
+        transform: scale(1.5);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1.5);
+        opacity: 0;
+    }
+}
+
+
+
+/* ANIMATIONS */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.fade-in.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 992px) {
+    .sidebar {
+        transform: translateX(-100%);
+    }
+    
+    .sidebar.open {
+        transform: translateX(0);
+    }
+    
+    .main-content {
+        margin-left: 0;
+    }
+    
+    .menu-toggle {
+        display: block;
+    }
+    
+    h1 {
+        font-size: 2.5rem;
+    }
+    
+    h2 {
+        font-size: 2rem;
+    }
+    
+    h3 {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .content-container {
+        padding: 1rem;
+    }
+    
+    .main-content {
+        padding: 1rem;
+    }
+    
+    h1 {
+        font-size: 2rem;
+    }
+    
+    h2 {
+        font-size: 1.75rem;
+    }
+    
+    h3 {
+        font-size: 1.25rem;
+    }
+    
+    .chart-container {
+        height: 300px;
+    }
+    
+    .row-cols-md-3 > * {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+    
+    .row-cols-md-2 > * {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+    
+    .card {
+        margin-bottom: 1.5rem;
+    }
+    
+    /* Улучшение отображения таблиц на мобильных устройствах */
+    .table-responsive {
+        margin-bottom: 1.5rem;
+        border-radius: 0.5rem;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        overflow: hidden;
+    }
+    
+    /* Добавляем для таблиц горизонтальную прокрутку и визуальную подсказку */
+    .table-responsive::after {
+        content: "← Прокрутите для просмотра →";
+        display: block;
+        text-align: center;
+        padding: 0.5rem;
+        color: var(--secondary-color);
+        font-size: 0.8rem;
+        background-color: #f8f9fa;
+        border-top: 1px solid #dee2e6;
+    }
+    
+    /* Фиксированный размер для кнопки "вверх" на мобильных устройствах */
+    .scroll-top {
+        width: 45px;
+        height: 45px;
+        bottom: 1.5rem;
+        right: 1.5rem;
+    }
+}
+
+/* Дополнительные стили для очень маленьких экранов */
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.75rem;
+    }
+    
+    h2 {
+        font-size: 1.5rem;
+        margin-top: 2rem;
+    }
+    
+    h3 {
+        font-size: 1.25rem;
+        margin-top: 1.5rem;
+    }
+    
+    .chart-container {
+        height: 250px;
+    }
+    
+    .card {
+        padding: 1.25rem;
+    }
+    
+    /* Исправление отступов на мобильных устройствах */
+    .row {
+        margin-right: -10px;
+        margin-left: -10px;
+    }
+    
+    .col, .col-1, .col-2, .col-3, .col-4, .col-5, .col-6, 
+    .col-7, .col-8, .col-9, .col-10, .col-11, .col-12,
+    .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, 
+    .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12 {
+        padding-right: 10px;
+        padding-left: 10px;
+    }
+}
+
+/* PRINT STYLES */
+@media print {
+    .sidebar, 
+    .menu-toggle, 
+    .scroll-top {
+        display: none;
+    }
+    
+    .main-content {
+        margin-left: 0;
+        padding: 0;
+    }
+    
+    .card {
+        box-shadow: none;
+        break-inside: avoid;
+    }
+    
+    h2 {
+        margin-top: 2rem;
+        page-break-before: always;
+    }
+    
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
+}
+
+/* Styles for requirement and example cards */
+.requirement-card, .example-card {
+    background-color: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+    margin-bottom: 1.5rem;
+}
+
+.requirement-card:hover, .example-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+.requirement-card .card-header, .example-card .card-header {
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 100%;
+}
+
+.requirement-card h5, .example-card h5 {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.requirement-card .card-body, .example-card .card-body {
+    padding: 1.5rem;
+}
+
+.requirement-card ul, .example-card ul {
+    margin-bottom: 0;
+    padding-left: 1.25rem;
+}
+
+.requirement-card li, .example-card li {
+    margin-bottom: 0.5rem;
+}
+
+/* Улучшения для мобильных устройств */
+@media (max-width: 767.98px) {
+    .requirement-card .row, .example-card .row {
+        flex-direction: column;
+    }
+    
+    .requirement-card .card-header, .example-card .card-header {
+        border-radius: 0.5rem 0.5rem 0 0;
+        padding: 1rem;
+    }
+    
+    .col-md-4 {
+        width: 100%;
+    }
+    
+    .col-md-8 {
+        width: 100%;
+    }
+}
+
+/* Стили для анимации счетчика цифр */
+.count-up {
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+/* CARD HEADER STYLES */
+.card-header.bg-danger {
+    background-color: #dc3545;
+    color: #ffffff !important;
+}
+
+.card-header.bg-primary {
+    background-color: #0d6efd;
+    color: #ffffff !important;
+}
+
+.card-header.bg-success {
+    background-color: #198754;
+    color: #ffffff !important;
+}
+
+.card-header.bg-warning {
+    background-color: #ffc107;
+    color: #212529 !important;
+    font-weight: bold;
+}
+
+.card-header.bg-info {
+    background-color: #0dcaf0;
+    color: #212529 !important;
+}
+
+/* SECTION SPECIFIC STYLES */
+#introduction {
+    padding-top: 1rem;
+}
+
+.highlight-box {
+    background-color: rgba(13, 110, 253, 0.1);
+    border-left: 4px solid var(--primary-color);
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    border-radius: 0 0.5rem 0.5rem 0;
+}
+
+.stat-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin: 2rem 0;
+}
+
+.stat-card {
+    flex: 1;
+    min-width: 200px;
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.stat-card h3 {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin: 0.5rem 0;
+}
+
+.stat-card p {
+    margin: 0;
+    color: var(--secondary-color);
+}
+
+/* Стили для блока конкурентов */
+.competitor-card {
+    border: none;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.competitor-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.competitor-card .card-header {
+    text-align: center;
+    border-bottom: none;
+}
+
+.competitor-item {
+    transition: all 0.3s ease;
+    border-right: 1px solid rgba(0, 0, 0, 0.05);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.competitor-item:hover {
+    background-color: rgba(0, 0, 0, 0.02);
+    transform: scale(1.03);
+    z-index: 5;
+}
+
+.competitor-icon {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 15px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.competitor-icon i {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+}
+
+.competitor-item:hover .competitor-icon {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.competitor-item:hover .competitor-icon i {
+    transform: translate(-50%, -50%) rotate(-5deg);
+}
+
+.competitor-item h6 {
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+.competitor-item:hover h6 {
+    color: var(--primary-color);
+}
+
+.competitor-item .badge {
+    transition: all 0.3s;
+}
+
+.competitor-item:hover .badge {
+    background-color: var(--primary-color) !important;
+    color: white !important;
+}
+
+/* Разные цвета для иконок по категориям */
+.competitor-card:nth-of-type(1) .competitor-icon {
+    background-color: rgba(13, 110, 253, 0.1);
+}
+
+.competitor-card:nth-of-type(2) .competitor-icon {
+    background-color: rgba(25, 135, 84, 0.1);
+}
+
+.competitor-card:nth-of-type(3) .competitor-icon {
+    background-color: rgba(13, 202, 240, 0.1);
+}
+
+.competitor-table {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.implementation-timeline {
+    position: relative;
+    padding-left: 3rem;
+    margin: 2rem 0;
+}
+
+.timeline-item {
+    position: relative;
+    padding-bottom: 2rem;
+}
+
+.timeline-item:before {
+    content: "";
+    position: absolute;
+    left: -2rem;
+    top: 0.5rem;
+    width: 1rem;
+    height: 1rem;
+    background-color: var(--primary-color);
+    border-radius: 50%;
+}
+
+.timeline-item:after {
+    content: "";
+    position: absolute;
+    left: -1.5rem;
+    top: 1.5rem;
+    bottom: 0;
+    width: 2px;
+    background-color: var(--primary-color);
+}
+
+.timeline-item:last-child:after {
+    display: none;
+}
+
+/* Стили для логотипа ХОЗМИР */
+.hosmir-logo {
+    display: inline-block;
+    background-color: #ffcc00;
+    color: #000;
+    font-weight: bold;
+    font-size: 1.5rem;
+    padding: 8px 20px;
+    border-radius: 8px;
+    position: relative;
+    border: 3px solid #000;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-family: Arial, sans-serif;
+}
+
+/* Адаптивность для блока конкурентов */
+@media (max-width: 767.98px) {
+    .competitor-item {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
+    
+    .competitor-item:last-child {
+        border-bottom: none;
+    }
+    
+    .competitor-card .card-body {
+        padding: 0;
+    }
+    
+    .competitor-item {
+        padding: 1rem;
+    }
+    
+    .competitor-icon {
+        width: 50px;
+        height: 50px;
+        margin-bottom: 10px;
+    }
+}
