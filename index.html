@@ -1,1280 +1,370 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Анализ компании "ХОЗМИР" и предложение цифровых решений</title>
-    
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-    
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- AOS (Animate On Scroll) -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
-    
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="static/css/styles.css">
+  <meta charset="UTF-8">
+  <title>Портфолио для ЛЕНРЕМОНТ: Инновационный контент-менеджмент</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Tailwind CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap" rel="stylesheet">
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+  <style>
+    html, body {
+      font-family: 'Montserrat', Arial, sans-serif;
+      background: #161722;
+      color: #f1f1f1;
+      min-height: 100vh;
+      scroll-behavior: smooth;
+    }
+    .section-divider {
+      border: none;
+      height: 2px;
+      background: linear-gradient(to right, #51e2f5 20%, #9df9ef 60%, transparent 100%);
+      margin: 32px 0;
+    }
+    .icon-bg {
+      background: linear-gradient(135deg, #182848 0%, #18649b 100%);
+      box-shadow: 0 2px 8px rgba(31, 71, 123, 0.15);
+    }
+    .interactive-card:hover {
+      box-shadow: 0 6px 32px #13b0eb33;
+      transform: translateY(-6px) scale(1.02);
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .repair-motif-bg {
+      background: url('https://cdn.jsdelivr.net/gh/icons8/flat-color-icons/svg/tools.svg') right bottom/120px no-repeat;
+    }
+    @media (max-width: 640px) {
+      .repair-motif-bg {
+        background-size: 60px;
+      }
+    }
+    .step-list li {
+      list-style: none;
+      position: relative;
+      padding-left: 1.8em;
+      margin-bottom: 0.8em;
+    }
+    .step-list li:before {
+      content: "\f0ad";
+      font-family: "Font Awesome 6 Free";
+      color: #13b0eb;
+      position: absolute;
+      left: 0;
+      top: 1px;
+      font-weight: 900;
+      font-size: 1em;
+    }
+    /* Chart legend for dark background */
+    .chartjs-legend ul {
+      margin: 0; padding: 0; display: flex; flex-wrap: wrap;
+    }
+    .chartjs-legend li {
+      display: flex; align-items: center; margin-right: 20px; font-size: 1em;
+    }
+    .chartjs-legend span {
+      display: inline-block;
+      width: 14px; height: 14px;
+      margin-right: 8px;
+      border-radius: 2px;
+    }
+    /* Remove Tailwind's focus ring for buttons (for PDF) */
+    button:focus { outline: none !important; box-shadow: none !important; }
+  </style>
 </head>
-<body>
-    <!-- Mobile Menu Toggle -->
-    <button class="menu-toggle" aria-expanded="false" aria-label="Открыть меню">
-        <i class="fas fa-bars"></i>
-    </button>
-    
-    <!-- Sidebar Navigation -->
-    <aside class="sidebar" style="background-color: #fffaeb;">
-        <div class="logo-container text-center mb-4">
-            <div class="hosmir-logo">ХОЗМИР</div>
-            <p class="text-muted mt-2">Анализ и решения</p>
-        </div>
-        
-        <ul class="nav-menu">
-            <li><a href="#introduction"><i class="fas fa-home me-2"></i>Введение</a></li>
-            <li><a href="#company-analysis"><i class="fas fa-building me-2"></i>Анализ компании</a></li>
-            <li><a href="#digital-presence"><i class="fas fa-globe me-2"></i>Цифровое присутствие</a></li>
-            <li><a href="#competitor-analysis"><i class="fas fa-chart-line me-2"></i>Анализ конкурентов</a></li>
-            <li><a href="#justification"><i class="fas fa-check-circle me-2"></i>Обоснование решения</a></li>
-            <li><a href="#requirements"><i class="fas fa-list me-2"></i>Ключевые требования</a></li>
-            <li><a href="#digital-solutions"><i class="fas fa-lightbulb me-2"></i>Цифровые решения</a></li>
-            <li><a href="#recommendations"><i class="fas fa-thumbs-up me-2"></i>Рекомендации</a></li>
-            <li><a href="#implementation"><i class="fas fa-tasks me-2"></i>План реализации</a></li>
-            <li><a href="#expected-results"><i class="fas fa-chart-pie me-2"></i>Ожидаемые результаты</a></li>
-            <li><a href="#financial-analysis"><i class="fas fa-money-bill-wave me-2"></i>Финансовый анализ</a></li>
-            <li><a href="#risks"><i class="fas fa-exclamation-triangle me-2"></i>Риски</a></li>
-            <li><a href="#conclusion"><i class="fas fa-flag-checkered me-2"></i>Заключение</a></li>
-        </ul>
-        
+<body class="repair-motif-bg">
+  <div class="max-w-4xl mx-auto p-6 sm:p-12">
+    <!-- Header -->
+    <header class="flex items-center space-x-4 mb-8">
+      <div class="icon-bg rounded-full w-16 h-16 flex items-center justify-center text-3xl text-blue-300 shadow-lg">
+        <i class="fas fa-tools"></i>
+      </div>
+      <div>
+        <h1 class="text-3xl sm:text-4xl font-bold text-blue-200 tracking-tight">Портфолио для ЛЕНРЕМОНТ</h1>
+        <h2 class="text-lg sm:text-xl text-gray-300 mt-1">Инновационный контент-менеджмент для сети номер один</h2>
+      </div>
+    </header>
 
-    </aside>
-    
-    <!-- Main Content -->
-    <main class="main-content">
-        <div class="content-container">
-            <!-- Title Section -->
-            <section id="introduction" class="mb-5">
-                <h1 data-aos="fade-up">Анализ компании "ХОЗМИР" и предложение цифровых решений</h1>
-                
-                <div class="highlight-box mt-4" data-aos="fade-up" data-aos-delay="200">
-                    <p class="lead mb-0">В современном мире цифровизация бизнеса становится не просто конкурентным преимуществом, а необходимым условием для выживания и развития компаний. Особенно это актуально для ритейла, где потребители все чаще ожидают омниканального опыта взаимодействия с брендами.</p>
-                </div>
-                
-                <p data-aos="fade-up" data-aos-delay="300">Данный отчет представляет собой комплексный анализ компании "ХОЗМИР" — региональной сети хозяйственных магазинов, и предложение по созданию для нее эффективного цифрового решения с учетом современных трендов и технологий.</p>
-                
-                <p data-aos="fade-up" data-aos-delay="400">Целью данного исследования является разработка обоснованного предложения по созданию мобильного приложения и сайта для компании "ХОЗМИР", которое поможет ей укрепить свои позиции на рынке, повысить лояльность клиентов и увеличить продажи.</p>
-            </section>
-            
-            <!-- Company Analysis Section -->
-            <section id="company-analysis" class="mb-5">
-                <h2 data-aos="fade-up">Анализ компании "ХОЗМИР"</h2>
-                
-                <h3 data-aos="fade-up">Общая информация</h3>
-                
-                <div class="card" data-aos="fade-up">
-                    <p>"ХОЗМИР" — региональная сеть магазинов хозяйственных товаров. На сегодняшний день компания управляет 4 магазинами в 3 городах:</p>
-                    <ul>
-                        <li>Киров — 1 магазин (население города 475 464 чел.)</li>
-                        <li>Сыктывкар — 2 магазина (население города 219 685 чел.)</li>
-                        <li>Ухта — 1 магазин (население города 93 096 чел.)</li>
-                    </ul>
-                </div>
-                
-                <h3 data-aos="fade-up">Ассортимент</h3>
-                
-                <div class="row row-cols-1 row-cols-md-3 g-4 mb-4" data-aos="fade-up">
-                    <div class="col">
-                        <div class="card h-100">
-                            <div class="card-body">
-                                <h5 class="card-title text-primary"><i class="fas fa-tools me-2"></i>Инструменты и стройматериалы</h5>
-                                <p class="card-text">Широкий выбор товаров для ремонта и строительства</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card h-100">
-                            <div class="card-body">
-                                <h5 class="card-title text-primary"><i class="fas fa-home me-2"></i>Товары для дома и быта</h5>
-                                <p class="card-text">Все необходимое для комфортного быта</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card h-100">
-                            <div class="card-body">
-                                <h5 class="card-title text-primary"><i class="fas fa-seedling me-2"></i>Садовый инвентарь</h5>
-                                <p class="card-text">Инструменты и техника для садоводов</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card h-100">
-                            <div class="card-body">
-                                <h5 class="card-title text-primary"><i class="fas fa-shower me-2"></i>Сантехника и электрика</h5>
-                                <p class="card-text">Комплектующие и решения для инженерных систем</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card h-100">
-                            <div class="card-body">
-                                <h5 class="card-title text-primary"><i class="fas fa-broom me-2"></i>Хозяйственные товары</h5>
-                                <p class="card-text">Товары для чистоты и порядка</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card h-100">
-                            <div class="card-body">
-                                <h5 class="card-title text-primary"><i class="fas fa-umbrella-beach me-2"></i>Товары для дачи и отдыха</h5>
-                                <p class="card-text">Все для комфортного отдыха на природе</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <h3 data-aos="fade-up">Целевая аудитория</h3>
-                
-                <div class="row row-cols-1 row-cols-md-2 g-4 mb-4" data-aos="fade-up">
-                    <div class="col">
-                        <div class="card h-100">
-                            <div class="card-body">
-                                <h5 class="card-title"><i class="fas fa-users me-2"></i>Жители небольших городов и пригородов</h5>
-                                <p class="card-text text-muted">Возраст: 25-65 лет</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card h-100">
-                            <div class="card-body">
-                                <h5 class="card-title"><i class="fas fa-leaf me-2"></i>Дачники и садоводы</h5>
-                                <p class="card-text text-muted">Сезонные покупатели садового инвентаря</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card h-100">
-                            <div class="card-body">
-                                <h5 class="card-title"><i class="fas fa-baby me-2"></i>Семьи с детьми</h5>
-                                <p class="card-text text-muted">Покупатели товаров для дома и быта</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card h-100">
-                            <div class="card-body">
-                                <h5 class="card-title"><i class="fas fa-hammer me-2"></i>Мастера-любители и профессионалы</h5>
-                                <p class="card-text text-muted">Покупатели инструментов и стройматериалов</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <h3 data-aos="fade-up">Конкурентные преимущества</h3>
-                
-                <div class="card" data-aos="fade-up">
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item"><i class="fas fa-check-circle text-success me-2"></i>Широкий ассортимент товаров (более 30 000 наименований)</li>
-                        <li class="list-group-item"><i class="fas fa-check-circle text-success me-2"></i>Удобное расположение магазинов вблизи спальных районов</li>
-                        <li class="list-group-item"><i class="fas fa-check-circle text-success me-2"></i>Наличие собственной программы лояльности (дисконтные карты)</li>
-                        <li class="list-group-item"><i class="fas fa-check-circle text-success me-2"></i>Квалифицированный персонал с опытом в строительстве и ремонте</li>
-                        <li class="list-group-item"><i class="fas fa-check-circle text-success me-2"></i>Конкурентные цены по сравнению с федеральными сетями</li>
-                    </ul>
-                </div>
-                
-                <h3 data-aos="fade-up">Текущие вызовы</h3>
-                
-                <div class="card" data-aos="fade-up">
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item"><i class="fas fa-exclamation-circle text-danger me-2"></i>Усиление конкуренции со стороны федеральных сетей и онлайн-ритейлеров</li>
-                        <li class="list-group-item"><i class="fas fa-exclamation-circle text-danger me-2"></i>Изменение покупательских привычек, особенно у молодого поколения (с 16-23 лет аудитория предпочитает онлайн шопинг)</li>
-                        <li class="list-group-item"><i class="fas fa-exclamation-circle text-danger me-2"></i>Ограниченное цифровое присутствие</li>
-                        <li class="list-group-item"><i class="fas fa-exclamation-circle text-danger me-2"></i>Недостаточная автоматизация бизнес-процессов</li>
-                        <li class="list-group-item"><i class="fas fa-exclamation-circle text-danger me-2"></i>Сложности с привлечением новых клиентов</li>
-                    </ul>
-                </div>
-            </section>
-            
-            <!-- Digital Presence Analysis Section -->
-            <section id="digital-presence" class="mb-5">
-                <h2 data-aos="fade-up">Анализ цифрового присутствия</h2>
-                
-                <h3 data-aos="fade-up">Текущее состояние</h3>
-                
-                <div class="card" data-aos="fade-up">
-                    <p>На данный момент цифровое присутствие компании "ХОЗМИР" ограничено:</p>
-                    <ul>
-                        <li>Отсутствие веб сайта</li>
-                        <li>Страницы в социальных сетях ВКонтакте с нерегулярными обновлениями</li>
-                        <li>Отсутствие мобильного приложения</li>
-                        <li>Отсутствие возможности онлайн-заказа товаров</li>
-                        <li>Нулевое присутствие на маркетплейсах</li>
-                    </ul>
-                </div>
-                
-                <h3 data-aos="fade-up">Основные проблемы</h3>
-                
-                <div class="mb-4" data-aos="fade-up">
-                    <div class="card shadow-sm mb-3">
-                        <div class="card-header bg-danger text-white">
-                            <h5 class="mb-0 d-flex align-items-center">
-                                <i class="fas fa-globe-europe me-2"></i>
-                                Отсутствие сайта
-                            </h5>
-                        </div>
-                        <div class="card-body">
-                            <ul class="list-unstyled mb-0 row">
-                                <li class="col-md-3 mb-2"><i class="fas fa-times-circle text-danger me-2"></i>Отсутствие онлайн-каталога товаров</li>
-                                <li class="col-md-3 mb-2"><i class="fas fa-times-circle text-danger me-2"></i>Невозможность проверки наличия товаров</li>
-                                <li class="col-md-3 mb-2"><i class="fas fa-times-circle text-danger me-2"></i>Отсутствие личного кабинета для клиентов</li>
-                                <li class="col-md-3 mb-2"><i class="fas fa-times-circle text-danger me-2"></i>Нет цифровой интеграции с программой лояльности</li>
-                            </ul>
-                        </div>
-                    </div>
-                    
-                    <div class="card shadow-sm mb-3">
-                        <div class="card-header bg-danger text-white">
-                            <h5 class="mb-0 d-flex align-items-center">
-                                <i class="fas fa-share-alt me-2"></i>
-                                Слабое присутствие в соцсетях
-                            </h5>
-                        </div>
-                        <div class="card-body">
-                            <ul class="list-unstyled mb-0 row">
-                                <li class="col-md-4 mb-2"><i class="fas fa-times-circle text-danger me-2"></i>Нерегулярные публикации</li>
-                                <li class="col-md-4 mb-2"><i class="fas fa-times-circle text-danger me-2"></i>Низкая вовлеченность аудитории</li>
-                                <li class="col-md-4 mb-2"><i class="fas fa-times-circle text-danger me-2"></i>Отсутствие единой контент-стратегии</li>
-                            </ul>
-                        </div>
-                    </div>
-                    
-                    <div class="card shadow-sm mb-3">
-                        <div class="card-header bg-danger text-white">
-                            <h5 class="mb-0 d-flex align-items-center">
-                                <i class="fas fa-chart-bar me-2"></i>
-                                Отсутствие аналитики
-                            </h5>
-                        </div>
-                        <div class="card-body">
-                            <ul class="list-unstyled mb-0 row">
-                                <li class="col-md-4 mb-2"><i class="fas fa-times-circle text-danger me-2"></i>Нет системы сбора и анализа данных</li>
-                                <li class="col-md-4 mb-2"><i class="fas fa-times-circle text-danger me-2"></i>Отсутствие инструментов отслеживания эффективности маркетинга</li>
-                                <li class="col-md-4 mb-2"><i class="fas fa-times-circle text-danger me-2"></i>Нет возможности персонализации контента</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                
-                <h3 data-aos="fade-up">Основные конкуренты</h3>
-                
-                <div class="mb-4" data-aos="fade-up">
-                    <!-- Федеральные DIY-сети -->
-                    <div class="card competitor-card shadow mb-4">
-                        <div class="card-header bg-primary text-white py-3">
-                            <h5 class="mb-0 d-flex align-items-center justify-content-center">
-                                <i class="fas fa-building me-2"></i>
-                                Федеральные DIY-сети
-                            </h5>
-                        </div>
-                        <div class="card-body p-0">
-                            <div class="row g-0">
-                                <div class="col-md-4 competitor-item">
-                                    <div class="p-3 text-center h-100 d-flex flex-column justify-content-center align-items-center">
-                                        <div class="competitor-icon">
-                                            <i class="fas fa-tools fa-2x text-primary mb-3"></i>
-                                        </div>
-                                        <h6 class="mb-2">Лемана Про</h6>
-                                        <span class="badge bg-light text-dark">Федеральная сеть</span>
-                                    </div>
-                                </div>
-                                <div class="col-md-4 competitor-item">
-                                    <div class="p-3 text-center h-100 d-flex flex-column justify-content-center align-items-center">
-                                        <div class="competitor-icon">
-                                            <i class="fas fa-bolt fa-2x text-primary mb-3"></i>
-                                        </div>
-                                        <h6 class="mb-2">220 Вольт</h6>
-                                        <span class="badge bg-light text-dark">Федеральная сеть</span>
-                                    </div>
-                                </div>
-                                <div class="col-md-4 competitor-item">
-                                    <div class="p-3 text-center h-100 d-flex flex-column justify-content-center align-items-center">
-                                        <div class="competitor-icon">
-                                            <i class="fas fa-shopping-basket fa-2x text-primary mb-3"></i>
-                                        </div>
-                                        <h6 class="mb-2">Галамарт</h6>
-                                        <span class="badge bg-light text-dark">Федеральная сеть</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Региональные сети -->
-                    <div class="card competitor-card shadow mb-4">
-                        <div class="card-header bg-success text-white py-3">
-                            <h5 class="mb-0 d-flex align-items-center justify-content-center">
-                                <i class="fas fa-store me-2"></i>
-                                Региональные сети
-                            </h5>
-                        </div>
-                        <div class="card-body p-0">
-                            <div class="row g-0">
-                                <div class="col-md-2 col-sm-6 competitor-item">
-                                    <div class="p-3 text-center h-100 d-flex flex-column justify-content-center align-items-center">
-                                        <div class="competitor-icon">
-                                            <i class="fas fa-home fa-2x text-success mb-3"></i>
-                                        </div>
-                                        <h6 class="mb-2">"ДомоСтрой"</h6>
-                                    </div>
-                                </div>
-                                <div class="col-md-2 col-sm-6 competitor-item">
-                                    <div class="p-3 text-center h-100 d-flex flex-column justify-content-center align-items-center">
-                                        <div class="competitor-icon">
-                                            <i class="fas fa-store-alt fa-2x text-success mb-3"></i>
-                                        </div>
-                                        <h6 class="mb-2">"Мега"</h6>
-                                    </div>
-                                </div>
-                                <div class="col-md-2 col-sm-6 competitor-item">
-                                    <div class="p-3 text-center h-100 d-flex flex-column justify-content-center align-items-center">
-                                        <div class="competitor-icon">
-                                            <i class="fas fa-hammer fa-2x text-success mb-3"></i>
-                                        </div>
-                                        <h6 class="mb-2">"Мастер"</h6>
-                                    </div>
-                                </div>
-                                <div class="col-md-3 col-sm-6 competitor-item">
-                                    <div class="p-3 text-center h-100 d-flex flex-column justify-content-center align-items-center">
-                                        <div class="competitor-icon">
-                                            <i class="fas fa-toolbox fa-2x text-success mb-3"></i>
-                                        </div>
-                                        <h6 class="mb-2">"Хозарсенал"</h6>
-                                    </div>
-                                </div>
-                                <div class="col-md-3 col-sm-6 competitor-item">
-                                    <div class="p-3 text-center h-100 d-flex flex-column justify-content-center align-items-center">
-                                        <div class="competitor-icon">
-                                            <i class="fas fa-shopping-basket fa-2x text-success mb-3"></i>
-                                        </div>
-                                        <h6 class="mb-2">"Галамарт"</h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Онлайн-ритейлеры -->
-                    <div class="card competitor-card shadow mb-4">
-                        <div class="card-header bg-info text-white py-3">
-                            <h5 class="mb-0 d-flex align-items-center justify-content-center">
-                                <i class="fas fa-shopping-cart me-2"></i>
-                                Онлайн-ритейлеры
-                            </h5>
-                        </div>
-                        <div class="card-body p-0">
-                            <div class="row g-0">
-                                <div class="col-md-2 col-sm-6 competitor-item">
-                                    <div class="p-3 text-center h-100 d-flex flex-column justify-content-center align-items-center">
-                                        <div class="competitor-icon">
-                                            <i class="fas fa-tshirt fa-2x text-info mb-3"></i>
-                                        </div>
-                                        <h6 class="mb-2">Wildberries</h6>
-                                        <span class="badge bg-light text-dark">Маркетплейс</span>
-                                    </div>
-                                </div>
-                                <div class="col-md-2 col-sm-6 competitor-item">
-                                    <div class="p-3 text-center h-100 d-flex flex-column justify-content-center align-items-center">
-                                        <div class="competitor-icon">
-                                            <i class="fas fa-box-open fa-2x text-info mb-3"></i>
-                                        </div>
-                                        <h6 class="mb-2">Ozon</h6>
-                                        <span class="badge bg-light text-dark">Маркетплейс</span>
-                                    </div>
-                                </div>
-                                <div class="col-md-3 col-sm-6 competitor-item">
-                                    <div class="p-3 text-center h-100 d-flex flex-column justify-content-center align-items-center">
-                                        <div class="competitor-icon">
-                                            <i class="fab fa-yandex fa-2x text-info mb-3"></i>
-                                        </div>
-                                        <h6 class="mb-2">Яндекс.Маркет</h6>
-                                        <span class="badge bg-light text-dark">Маркетплейс</span>
-                                    </div>
-                                </div>
-                                <div class="col-md-2 col-sm-6 competitor-item">
-                                    <div class="p-3 text-center h-100 d-flex flex-column justify-content-center align-items-center">
-                                        <div class="competitor-icon">
-                                            <i class="fas fa-truck fa-2x text-info mb-3"></i>
-                                        </div>
-                                        <h6 class="mb-2">Петрович</h6>
-                                        <span class="badge bg-light text-dark">Стройматериалы</span>
-                                    </div>
-                                </div>
-                                <div class="col-md-3 col-sm-6 competitor-item">
-                                    <div class="p-3 text-center h-100 d-flex flex-column justify-content-center align-items-center">
-                                        <div class="competitor-icon">
-                                            <i class="fas fa-tools fa-2x text-info mb-3"></i>
-                                        </div>
-                                        <h6 class="mb-2">Лемана Про</h6>
-                                        <span class="badge bg-light text-dark">Онлайн-магазин</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            
-            <!-- Competitor Analysis Section -->
-            <section id="competitor-analysis" class="mb-5">
-                <h2 data-aos="fade-up">Анализ конкурентов</h2>
-                
-                <h3 data-aos="fade-up">Сравнительный анализ цифровых решений</h3>
-                
-                <div class="competitor-table table-responsive" data-aos="fade-up">
-                    <table class="table table-striped table-hover sortable">
-                        <thead>
-                            <tr>
-                                <th>Критерий</th>
-                                <th>ХОЗМИР</th>
-                                <th>Лемана Про</th>
-                                <th>ДомоСтрой</th>
-                                <th>Wildberries</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Веб-сайт</td>
-                                <td>Отсутствует</td>
-                                <td>Полноценный интернет-магазин</td>
-                                <td>Каталог с ценами</td>
-                                <td>Маркетплейс</td>
-                            </tr>
-                            <tr>
-                                <td>Мобильное приложение</td>
-                                <td>Отсутствует</td>
-                                <td>Функциональное</td>
-                                <td>Базовое</td>
-                                <td>Продвинутое</td>
-                            </tr>
-                            <tr>
-                                <td>Онлайн-заказ</td>
-                                <td>Нет</td>
-                                <td>Да</td>
-                                <td>Частично</td>
-                                <td>Да</td>
-                            </tr>
-                            <tr>
-                                <td>Проверка наличия</td>
-                                <td>Нет</td>
-                                <td>Да</td>
-                                <td>Да</td>
-                                <td>Да</td>
-                            </tr>
-                            <tr>
-                                <td>Программа лояльности</td>
-                                <td>Офлайн</td>
-                                <td>Омниканальная</td>
-                                <td>Офлайн</td>
-                                <td>Цифровая</td>
-                            </tr>
-                            <tr>
-                                <td>Персонализация</td>
-                                <td>Нет</td>
-                                <td>Средняя</td>
-                                <td>Низкая</td>
-                                <td>Высокая</td>
-                            </tr>
-                            <tr>
-                                <td>Контент</td>
-                                <td>Минимальный</td>
-                                <td>Обширный</td>
-                                <td>Базовый</td>
-                                <td>Продвинутый</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                
-                <div class="chart-container" data-aos="fade-up">
-                    <canvas id="competitorAnalysisChart"></canvas>
-                </div>
-                
-                <h3 data-aos="fade-up">Примеры успешной цифровизации в ритейле</h3>
-                
-                <div class="examples-cards" data-aos="fade-up">
-                    <div class="example-card mb-4">
-                        <div class="row g-0">
-                            <div class="col-md-4">
-                                <div class="card-header bg-primary h-100 d-flex align-items-center justify-content-center">
-                                    <h5 class="mb-0">Леруа Мерлен (Россия)</h5>
-                                </div>
-                            </div>
-                            <div class="col-md-8">
-                                <div class="card-body">
-                                    <ul>
-                                        <li>Внедрение омниканальной стратегии увеличило конверсию на <span class="count-up">27</span>%</li>
-                                        <li>Мобильное приложение с функцией AR-визуализации повысило средний чек на <span class="count-up">18</span>%</li>
-                                        <li>Интеграция офлайн и онлайн программы лояльности увеличила частоту покупок на <span class="count-up">22</span>%</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="example-card mb-4">
-                        <div class="row g-0">
-                            <div class="col-md-4">
-                                <div class="card-header bg-primary h-100 d-flex align-items-center justify-content-center">
-                                    <h5 class="mb-0">Home Depot (США)</h5>
-                                </div>
-                            </div>
-                            <div class="col-md-8">
-                                <div class="card-body">
-                                    <ul>
-                                        <li>Внедрение системы "Click & Collect" сократило время получения заказа на <span class="count-up">30</span>%</li>
-                                        <li>Персонализированные рекомендации увеличили конверсию на <span class="count-up">35</span>%</li>
-                                        <li>Мобильное приложение с функцией навигации по магазину повысило удовлетворенность клиентов на <span class="count-up">40</span>%</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="example-card mb-4">
-                        <div class="row g-0">
-                            <div class="col-md-4">
-                                <div class="card-header bg-primary h-100 d-flex align-items-center justify-content-center">
-                                    <h5 class="mb-0">Castorama (Польша)</h5>
-                                </div>
-                            </div>
-                            <div class="col-md-8">
-                                <div class="card-body">
-                                    <ul>
-                                        <li>Внедрение цифрового помощника по ремонту увеличило время, проводимое в приложении, на <span class="count-up">45</span>%</li>
-                                        <li>Интеграция с социальными сетями повысила органический трафик на <span class="count-up">28</span>%</li>
-                                        <li>Система персонализированных уведомлений увеличила возвратный трафик на <span class="count-up">32</span>%</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            
-            <!-- Justification Section -->
-            <section id="justification" class="mb-5">
-                <h2 data-aos="fade-up">Обоснование необходимости цифрового решения</h2>
-                
-                <h3 data-aos="fade-up">Рыночные тренды</h3>
-                
-                <div class="card" data-aos="fade-up">
-                    <div class="chart-container p-4">
-                        <canvas id="marketTrendsChart"></canvas>
-                    </div>
-                    
-                    <div class="stat-container">
-                        <div class="stat-card">
-                            <p>Используют онлайн-каналы перед покупкой</p>
-                            <h3><span class="count-up">73</span>%</h3>
-                            <p class="small">российских потребителей (GfK, 2024)</p>
-                        </div>
-                        <div class="stat-card">
-                            <p>Рост мобильных покупок в России</p>
-                            <h3><span class="count-up">42</span>%</h3>
-                            <p class="small">за последний год (Data Insight, 2025)</p>
-                        </div>
-                        <div class="stat-card">
-                            <p>Предпочитают омниканальность</p>
-                            <h3><span class="count-up">67</span>%</h3>
-                            <p class="small">покупателей (АКИТ, 2024)</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <h3 data-aos="fade-up">Изменение покупательского поведения</h3>
-                
-                <div class="behavior-cards" data-aos="fade-up">
-                    <div class="example-card mb-4">
-                        <div class="row g-0">
-                            <div class="col-md-4">
-                                <div class="card-header bg-primary h-100 d-flex align-items-center justify-content-center">
-                                    <h5 class="mb-0"><i class="fas fa-sync-alt me-2"></i>Омниканальность</h5>
-                                </div>
-                            </div>
-                            <div class="col-md-8">
-                                <div class="card-body">
-                                    <p><span class="count-up">61</span>% онлайн-покупателей рассчитывает на омниканальную коммуникацию с брендами</p>
-                                    <p>Потребители ожидают единого опыта взаимодействия с брендом через все каналы</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="example-card mb-4">
-                        <div class="row g-0">
-                            <div class="col-md-4">
-                                <div class="card-header bg-success h-100 d-flex align-items-center justify-content-center">
-                                    <h5 class="mb-0"><i class="fas fa-mobile-alt me-2"></i>Мобильность</h5>
-                                </div>
-                            </div>
-                            <div class="col-md-8">
-                                <div class="card-body">
-                                    <p><span class="count-up">72</span>% пользователей предпочитают искать товары через мобильные устройства</p>
-                                    <p>Удобство и скорость доступа к информации - ключевой фактор выбора ритейлера</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="example-card mb-4">
-                        <div class="row g-0">
-                            <div class="col-md-4">
-                                <div class="card-header bg-info h-100 d-flex align-items-center justify-content-center">
-                                    <h5 class="mb-0"><i class="fas fa-user-check me-2"></i>Персонализация</h5>
-                                </div>
-                            </div>
-                            <div class="col-md-8">
-                                <div class="card-body">
-                                    <p><span class="count-up">83</span>% потребителей готовы делиться данными в обмен на персонализированный опыт</p>
-                                    <p>Покупатели ожидают релевантных рекомендаций и специальных предложений</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="example-card mb-4">
-                        <div class="row g-0">
-                            <div class="col-md-4">
-                                <div class="card-header bg-warning h-100 d-flex align-items-center justify-content-center">
-                                    <h5 class="mb-0"><i class="fas fa-info-circle me-2"></i>Информационная прозрачность</h5>
-                                </div>
-                            </div>
-                            <div class="col-md-8">
-                                <div class="card-body">
-                                    <p><span class="count-up">92</span>% покупателей считают важным доступ к полной информации о товаре</p>
-                                    <p>Возможность проверить наличие и характеристики товара онлайн повышает конверсию</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            
-            <!-- Requirements Section -->
-            <section id="requirements" class="mb-5">
-                <h2 data-aos="fade-up">Ключевые требования к цифровому решению</h2>
-                
-                <div class="requirements-cards" data-aos="fade-up">
-                    <div class="requirement-card mb-4">
-                        <div class="row g-0">
-                            <div class="col-md-4">
-                                <div class="card-header bg-primary h-100 d-flex align-items-center justify-content-center">
-                                    <h5 class="mb-0">Функциональные требования</h5>
-                                </div>
-                            </div>
-                            <div class="col-md-8">
-                                <div class="card-body">
-                                    <ul>
-                                        <li>Полный каталог товаров с фильтрацией и поиском</li>
-                                        <li>Личный кабинет пользователя</li>
-                                        <li>Система проверки наличия товаров в конкретных магазинах</li>
-                                        <li>Интеграция с системой лояльности</li>
-                                        <li>Возможность онлайн-заказа с самовывозом из магазина</li>
-                                        <li>Система уведомлений о специальных предложениях</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="requirement-card mb-4">
-                        <div class="row g-0">
-                            <div class="col-md-4">
-                                <div class="card-header bg-success h-100 d-flex align-items-center justify-content-center">
-                                    <h5 class="mb-0">Технические требования</h5>
-                                </div>
-                            </div>
-                            <div class="col-md-8">
-                                <div class="card-body">
-                                    <ul>
-                                        <li>Адаптивный дизайн для всех устройств</li>
-                                        <li>Высокая скорость загрузки страниц</li>
-                                        <li>Простая и понятная навигация</li>
-                                        <li>Интеграция с 1С и другими системами компании</li>
-                                        <li>Масштабируемость решения</li>
-                                        <li>Защита персональных данных</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="requirement-card mb-4">
-                        <div class="row g-0">
-                            <div class="col-md-4">
-                                <div class="card-header bg-warning h-100 d-flex align-items-center justify-content-center">
-                                    <h5 class="mb-0">Бизнес-требования</h5>
-                                </div>
-                            </div>
-                            <div class="col-md-8">
-                                <div class="card-body">
-                                    <ul>
-                                        <li>Увеличение клиентской базы на <span class="count-up">20</span>% в течение года</li>
-                                        <li>Рост среднего чека на <span class="count-up">15</span>%</li>
-                                        <li>Повышение лояльности клиентов</li>
-                                        <li>Увеличение частоты повторных покупок</li>
-                                        <li>Снижение стоимости привлечения клиента</li>
-                                        <li>Срок окупаемости инвестиций: <span class="count-up">12</span>-<span class="count-up">18</span> месяцев</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            
-            <!-- Digital Solutions Section -->
-            <section id="digital-solutions" class="mb-5">
-                <h2 data-aos="fade-up">Современные цифровые решения в ритейле</h2>
-                
-                <h3 data-aos="fade-up">Ключевые компоненты решения</h3>
-                
-                <div class="solution-cards" data-aos="fade-up">
-                    <div class="example-card mb-4">
-                        <div class="row g-0">
-                            <div class="col-md-4">
-                                <div class="card-header bg-primary h-100 d-flex align-items-center justify-content-center">
-                                    <h5 class="mb-0"><i class="fas fa-globe me-2"></i>Веб-сайт</h5>
-                                </div>
-                            </div>
-                            <div class="col-md-8">
-                                <div class="card-body">
-                                    <h6>Основные функции:</h6>
-                                    <ul>
-                                        <li>Каталог товаров с детальными описаниями</li>
-                                        <li>Система фильтрации и поиска</li>
-                                        <li>Проверка наличия в конкретном магазине</li>
-                                        <li>Онлайн-бронирование и заказ</li>
-                                        <li>Личный кабинет клиента</li>
-                                        <li>Интеграция с программой лояльности</li>
-                                        <li>Блог с полезным контентом (инструкции, советы)</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="example-card mb-4">
-                        <div class="row g-0">
-                            <div class="col-md-4">
-                                <div class="card-header bg-primary h-100 d-flex align-items-center justify-content-center">
-                                    <h5 class="mb-0"><i class="fas fa-mobile-alt me-2"></i>Мобильное приложение</h5>
-                                </div>
-                            </div>
-                            <div class="col-md-8">
-                                <div class="card-body">
-                                    <h6>Уникальные функции:</h6>
-                                    <ul>
-                                        <li>Сканирование товаров в магазине для получения информации</li>
-                                        <li>Push-уведомления о специальных предложениях</li>
-                                        <li>Цифровая карта лояльности</li>
-                                        <li>Мастер подбора товаров по параметрам</li>
-                                        <li>Навигация по магазину</li>
-                                        <li>Интерактивные инструкции по использованию товаров</li>
-                                        <li>Отзывы и рейтинги товаров</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="example-card mb-4">
-                        <div class="row g-0">
-                            <div class="col-md-4">
-                                <div class="card-header bg-primary h-100 d-flex align-items-center justify-content-center">
-                                    <h5 class="mb-0"><i class="fas fa-database me-2"></i>CRM-система</h5>
-                                </div>
-                            </div>
-                            <div class="col-md-8">
-                                <div class="card-body">
-                                    <h6>Возможности системы:</h6>
-                                    <ul>
-                                        <li>Сбор и анализ данных о клиентах</li>
-                                        <li>Сегментация клиентской базы</li>
-                                        <li>Управление маркетинговыми кампаниями</li>
-                                        <li>Отслеживание эффективности маркетинга</li>
-                                        <li>Автоматизация коммуникаций с клиентами</li>
-                                        <li>Персонализированные предложения</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="example-card mb-4">
-                        <div class="row g-0">
-                            <div class="col-md-4">
-                                <div class="card-header bg-primary h-100 d-flex align-items-center justify-content-center">
-                                    <h5 class="mb-0"><i class="fas fa-chart-line me-2"></i>Аналитическая платформа</h5>
-                                </div>
-                            </div>
-                            <div class="col-md-8">
-                                <div class="card-body">
-                                    <h6>Ключевые метрики:</h6>
-                                    <ul>
-                                        <li>Анализ поведения пользователей</li>
-                                        <li>Отслеживание конверсии</li>
-                                        <li>Оценка эффективности рекламных каналов</li>
-                                        <li>Анализ ассортимента и спроса</li>
-                                        <li>Прогнозирование продаж</li>
-                                        <li>Отчеты по эффективности программы лояльности</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            
-            <!-- Recommendations Section -->
-            <section id="recommendations" class="mb-5">
-                <h2 data-aos="fade-up">Рекомендации по улучшению цифрового решения</h2>
-                
-                <div class="recommendation-cards" data-aos="fade-up">
-                    <div class="example-card mb-4">
-                        <div class="row g-0">
-                            <div class="col-md-4">
-                                <div class="card-header bg-success h-100 d-flex align-items-center justify-content-center">
-                                    <h5 class="mb-0">Краткосрочные улучшения (0-6 месяцев)</h5>
-                                </div>
-                            </div>
-                            <div class="col-md-8">
-                                <div class="card-body">
-                                    <ol>
-                                        <li><strong>Создание базового веб-сайта</strong> с каталогом товаров и информацией о магазинах</li>
-                                        <li><strong>Активизация присутствия в социальных сетях</strong> с регулярным контент-планом</li>
-                                        <li><strong>Внедрение цифровых карт лояльности</strong> для клиентов</li>
-                                        <li><strong>Настройка сбора базовой аналитики</strong> по посетителям сайта</li>
-                                        <li><strong>Обучение персонала</strong> работе с новыми цифровыми инструментами</li>
-                                    </ol>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="example-card mb-4">
-                        <div class="row g-0">
-                            <div class="col-md-4">
-                                <div class="card-header bg-success h-100 d-flex align-items-center justify-content-center">
-                                    <h5 class="mb-0">Среднесрочные улучшения (6-12 месяцев)</h5>
-                                </div>
-                            </div>
-                            <div class="col-md-8">
-                                <div class="card-body">
-                                    <ol>
-                                        <li><strong>Разработка полноценного интернет-магазина</strong> с онлайн-заказом и самовывозом</li>
-                                        <li><strong>Внедрение CRM-системы</strong> для управления взаимоотношениями с клиентами</li>
-                                        <li><strong>Запуск email-маркетинга</strong> и персонализированных рассылок</li>
-                                        <li><strong>Развитие контентной стратегии</strong> (видео-инструкции, мастер-классы, блог)</li>
-                                    </ol>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            
-            <!-- Implementation Section -->
-            <section id="implementation" class="mb-5">
-                <h2 data-aos="fade-up">План реализации</h2>
-                
-                <div class="implementation-timeline" data-aos="fade-up">
-                    <div class="timeline-item">
-                        <h4>Этап 1: Подготовка и планирование (1-2 недели)</h4>
-                        <ul>
-                            <li>Проведение детального аудита текущих бизнес-процессов</li>
-                            <li>Формирование проектной команды</li>
-                            <li>Разработка технического задания</li>
-                            <li>Детализация бюджета и сроков</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="timeline-item">
-                        <h4>Этап 2: Разработка веб-сайта (1-3 месяца)</h4>
-                        <ul>
-                            <li>Создание дизайн-концепции</li>
-                            <li>Разработка структуры и прототипов</li>
-                            <li>Верстка и программирование</li>
-                            <li>Наполнение каталога товаров</li>
-                            <li>Интеграция с внутренними системами</li>
-                            <li>Тестирование и запуск</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="timeline-item">
-                        <h4>Этап 3: Внедрение CRM и аналитики (3-4 месяца)</h4>
-                        <ul>
-                            <li>Выбор и настройка CRM-решения</li>
-                            <li>Интеграция с веб-сайтом</li>
-                            <li>Настройка системы сбора аналитики</li>
-                            <li>Разработка системы отчетности</li>
-                            <li>Обучение персонала</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="timeline-item">
-                        <h4>Этап 4: Разработка мобильного веб приложения (4-6 месяца)</h4>
-                        <ul>
-                            <li>Разработка концепции и прототипа</li>
-                            <li>Создание дизайна интерфейса</li>
-                            <li>Программирование основного функционала</li>
-                            <li>Интеграция с существующими системами</li>
-                            <li>Тестирование и выпуск бета-версии</li>
-                            <li>Доработка по результатам тестирования</li>
-                        </ul>
-                    </div>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-            
-            <!-- Expected Results Section -->
-            <section id="expected-results" class="mb-5">
-                <h2 data-aos="fade-up">Ожидаемые результаты</h2>
-                
-                <div class="row row-cols-1 row-cols-md-2 g-4 mb-4" data-aos="fade-up">
-                    <div class="col">
-                        <div class="card h-100">
-                            <div class="card-header bg-success">
-                                <h5 class="mb-0">Бизнес-показатели</h5>
-                            </div>
-                            <div class="card-body">
-                                <div class="chart-container">
-                                    <canvas id="revenueGrowthChart"></canvas>
-                                </div>
-                                <ul class="mt-4">
-                                    <li>Увеличение выручки на 8-10% в первый год, 15-20% во второй год, 20-25% в третий год</li>
-                                    <li>Рост среднего чека на 15-20%</li>
-                                    <li>Увеличение частоты повторных покупок на 25%</li>
-                                    <li>Снижение стоимости привлечения клиента на 30%</li>
-                                    <li>Расширение клиентской базы на 35-40% за 3 года</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card h-100">
-                            <div class="card-header bg-success">
-                                <h5 class="mb-0">Качественные улучшения</h5>
-                            </div>
-                            <div class="card-body">
-                                <ul>
-                                    <li><strong>Повышение узнаваемости бренда</strong> и усиление позиций на региональном рынке</li>
-                                    <li><strong>Увеличение лояльности клиентов</strong> благодаря удобным цифровым сервисам</li>
-                                    <li><strong>Улучшение клиентского опыта</strong> через омниканальное взаимодействие</li>
-                                    <li><strong>Получение ценных данных о клиентах</strong> для принятия более обоснованных решений</li>
-                                    <li><strong>Оптимизация бизнес-процессов</strong> и повышение эффективности работы персонала</li>
-                                    <li><strong>Привлечение молодой аудитории</strong>, предпочитающей онлайн-каналы</li>
-                                    <li><strong>Создание фундамента</strong> для дальнейшего масштабирования бизнеса</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            
-            <!-- Financial Analysis Section -->
-            <section id="financial-analysis" class="mb-5">
-                <h2 data-aos="fade-up">Финансовый анализ</h2>
-                
-                <h3 data-aos="fade-up">Инвестиционные затраты</h3>
-                
-                <div class="row mb-4" data-aos="fade-up">
-                    <div class="col-md-6">
-                        <div class="chart-container">
-                            <canvas id="investmentChart"></canvas>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="table-responsive">
-                            <table class="table table-striped">
-                                <thead>
-                                    <tr>
-                                        <th>Категория затрат</th>
-                                        <th>Стоимость (руб.)</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>Разработка веб-сайта</td>
-                                        <td>400 000</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Разработка мобильного приложения</td>
-                                        <td>300 000</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Интеграция с существующими системами</td>
-                                        <td>100 000</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Серверная инфраструктура</td>
-                                        <td>100 000</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Обучение персонала</td>
-                                        <td>50 000</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Маркетинговое продвижение</td>
-                                        <td>50 000</td>
-                                    </tr>
-                                    <tr class="table-primary">
-                                        <td><strong>Итого CAPEX</strong></td>
-                                        <td><strong>1 000 000</strong></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-                
-                <h3 data-aos="fade-up">Операционные расходы (OPEX) в год</h3>
-                
-                <div class="table-responsive" data-aos="fade-up">
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th>Категория затрат</th>
-                                <th>Стоимость (руб.)</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Техническая поддержка</td>
-                                <td>300 000</td>
-                            </tr>
-                            <tr>
-                                <td>Хостинг и серверы</td>
-                                <td>150 000</td>
-                            </tr>
-                            <tr>
-                                <td>Обновления и доработки</td>
-                                <td>250 000</td>
-                            </tr>
-                            <tr>
-                                <td>Маркетинговые активности</td>
-                                <td>200 000</td>
-                            </tr>
-                            <tr class="table-primary">
-                                <td><strong>Итого OPEX в год</strong></td>
-                                <td><strong>600 000</strong></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                
-                <h3 data-aos="fade-up">Анализ эффективности инвестиций</h3>
-                
-                <div class="row mb-4" data-aos="fade-up">
-                    <div class="col-12">
-                        <div class="chart-container">
-                            <canvas id="cashFlowChart"></canvas>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="card mb-4" data-aos="fade-up">
-                    <div class="card-header bg-primary">
-                        <h5 class="mb-0">Ключевые финансовые показатели</h5>
-                    </div>
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <h6 class="text-success mb-2"><i class="fas fa-chart-line me-2"></i>Показатели эффективности</h6>
-                                <ul>
-                                    <li><strong>Срок окупаемости:</strong> 14 месяцев</li>
-                                    <li><strong>ROI (3 года):</strong> 205%</li>
-                                    <li><strong>IRR (Internal Rate of Return):</strong> 68%</li>
-                                    <li><strong>NPV (Net Present Value):</strong> 5 820 000 руб. при ставке дисконтирования 15%</li>
-                                </ul>
-                            </div>
-                            <div class="col-md-6">
-                                <h6 class="text-success mb-2"><i class="fas fa-money-bill-wave me-2"></i>Экономическая выгода</h6>
-                                <ul>
-                                    <li><strong>Дополнительный доход за 3 года:</strong> 21 500 000 руб.</li>
-                                    <li><strong>Экономия на операционных издержках:</strong> до 15% в год</li>
-                                    <li><strong>Увеличение среднего чека:</strong> на 12-18%</li>
-                                    <li><strong>Рост частоты покупок:</strong> на 20-25%</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="alert alert-success mt-3 mb-0">
-                            <i class="fas fa-lightbulb me-2"></i><strong>Преимущество:</strong> Инвестиции в цифровое решение в 1,7 раза выгоднее, чем открытие нового магазина (ROI 205% против 120%).
-                        </div>
-                    </div>
-                </div>
-                
-                <h3 data-aos="fade-up">Сравнение с альтернативными инвестициями</h3>
-                
-                <div class="chart-container" data-aos="fade-up">
-                    <canvas id="roiComparisonChart"></canvas>
-                </div>
-                
-                <div class="highlight-box mt-4" data-aos="fade-up">
-                    <h4>Выводы финансового анализа</h4>
-                    <ol>
-                        <li><strong>Высокая рентабельность инвестиций:</strong> Проект демонстрирует ROI в 205% за 3 года, что значительно превышает доходность альтернативных инвестиций.</li>
-                        <li><strong>Быстрая окупаемость:</strong> Срок окупаемости составляет около 14 месяцев, что является хорошим показателем для проектов цифровой трансформации.</li>
-                        <li><strong>Диверсификация источников дохода:</strong> Проект создает несколько новых источников дохода, что снижает общие бизнес-риски.</li>
-                        <li><strong>Устойчивость к изменениям:</strong> Анализ чувствительности показывает, что даже при неблагоприятных сценариях проект остается рентабельным.</li>
-                        <li><strong>Стратегическая ценность:</strong> Помимо финансовой отдачи, проект создает долгосрочное конкурентное преимущество и модернизирует бизнес-модель компании.</li>
-                    </ol>
-                </div>
-            </section>
-            
-            <!-- Risks Section -->
-            <section id="risks" class="mb-5">
-                <h2 data-aos="fade-up">Потенциальные риски и их минимизация</h2>
-                
-                <div class="table-responsive" data-aos="fade-up">
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th>Риск</th>
-                                <th>Вероятность</th>
-                                <th>Влияние</th>
-                                <th>Меры по минимизации</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Превышение бюджета проекта</td>
-                                <td>Средняя</td>
-                                <td>Высокое</td>
-                                <td>
-                                    <ul>
-                                        <li>Детальное планирование бюджета с резервом</li>
-                                        <li>Поэтапное финансирование с контрольными точками</li>
-                                        <li>Регулярный мониторинг расходов</li>
-                                    </ul>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Задержки в разработке</td>
-                                <td>Высокая</td>
-                                <td>Среднее</td>
-                                <td>
-                                    <ul>
-                                        <li>Применение гибких методологий разработки</li>
-                                        <li>Привлечение опытных подрядчиков</li>
-                                        <li>Создание реалистичного графика с временным буфером</li>
-                                    </ul>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Низкая адаптация пользователей</td>
-                                <td>Средняя</td>
-                                <td>Высокое</td>
-                                <td>
-                                    <ul>
-                                        <li>Проведение пользовательского тестирования на ранних этапах</li>
-                                        <li>Разработка интуитивно понятного интерфейса</li>
-                                        <li>Обучение клиентов и стимулирование использования</li>
-                                    </ul>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Технические проблемы при интеграции</td>
-                                <td>Высокая</td>
-                                <td>Высокое</td>
-                                <td>
-                                    <ul>
-                                        <li>Предварительный аудит существующих систем</li>
-                                        <li>Создание детальной технической спецификации</li>
-                                        <li>Поэтапная интеграция с тщательным тестированием</li>
-                                    </ul>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Недостаточная квалификация персонала</td>
-                                <td>Средняя</td>
-                                <td>Среднее</td>
-                                <td>
-                                    <ul>
-                                        <li>Разработка программы обучения сотрудников</li>
-                                        <li>Создание понятных инструкций по работе с системами</li>
-                                        <li>Техническая поддержка в переходный период</li>
-                                    </ul>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Появление новых конкурентов</td>
-                                <td>Низкая</td>
-                                <td>Среднее</td>
-                                <td>
-                                    <ul>
-                                        <li>Постоянный мониторинг рынка</li>
-                                        <li>Регулярное обновление функционала</li>
-                                        <li>Фокус на уникальных преимуществах</li>
-                                    </ul>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </section>
-            
-            <!-- Conclusion Section -->
-            <section id="conclusion" class="mb-5">
-                <h2 data-aos="fade-up">Заключение</h2>
-                
-                <div class="highlight-box" data-aos="fade-up">
-                    <p class="lead">Внедрение комплексного цифрового решения представляет для компании "ХОЗМИР" не только возможность устранить текущие недостатки в обслуживании клиентов, но и стратегический шаг к долгосрочному устойчивому развитию.</p>
-                </div>
-                
-                <div class="card" data-aos="fade-up">
-                    <div class="card-body">
-                        <p>Предлагаемое решение позволит компании:</p>
-                        <ul>
-                            <li><strong>Адаптироваться к изменившимся покупательским привычкам</strong>, соответствуя ожиданиям современных потребителей</li>
-                            <li><strong>Эффективно конкурировать</strong> с федеральными сетями и онлайн-ритейлерами</li>
-                            <li><strong>Увеличить целевую аудиторию</strong> также за счет привлечения молодого поколения</li>
-                            <li><strong>Повысить эффективность бизнес-процессов</strong> через их автоматизацию</li>
-                            <li><strong>Создать базу для дальнейшего масштабирования</strong> и развития бизнеса</li>
-                        </ul>
-                        
-                        <p>Финансовый анализ демонстрирует высокую экономическую эффективность проекта с периодом окупаемости около 14 месяцев и значительным потенциалом долгосрочного роста доходов.</p>
-                        
-                        <p>Учитывая текущие рыночные тренды и опыт успешных кейсов цифровизации в ритейле, можно с уверенностью заключить, что предлагаемое решение является для компании "ХОЗМИР" не просто желательным, а необходимым условием для сохранения конкурентоспособности и обеспечения устойчивого роста в ближайшие годы.</p>
-                    </div>
-                </div>
-            </section>
+    <hr class="section-divider">
+
+    <!-- Раздел 1. Анализ компании -->
+    <section id="section1" class="mb-12">
+      <h3 class="text-2xl font-semibold text-blue-300 mb-3 flex items-center"><i class="fas fa-clipboard-list mr-2"></i>Анализ компании «ЛЕНРЕМОНТ» и понимание бизнеса</h3>
+      <div class="bg-gray-900 bg-opacity-80 rounded-xl p-5 mb-4 shadow-lg border border-gray-800">
+        <ul class="grid sm:grid-cols-2 gap-x-8 step-list">
+          <li><strong>31 мастерская</strong> в СПб, Москве, Пскове, Великом Новгороде.</li>
+          <li><strong>Более 30 лет</strong> доверия рынка (основана в 1989 г.)</li>
+          <li><strong>Ремонт бытовой, цифровой техники и инструментов</strong> всех брендов и типов.</li>
+          <li><strong>Развитие мобильных сервисов:</strong> фирменное приложение для мастеров и клиентов.</li>
+          <li><strong>Ориентация на честность, прозрачность, человеческое отношение</strong>.</li>
+          <li><strong>Уникальная кадровая политика:</strong> собственное обучение мастеров, наставничество.</li>
+          <li><strong>Быстрое реагирование на рынок,</strong> внедрение новых услуг и технологий.</li>
+          <li><strong>Клиентоориентированный подход,</strong> поддержка отзывов, ставка на репутацию.</li>
+        </ul>
+        <div class="mt-4 flex flex-wrap gap-4">
+          <span class="px-3 py-1 rounded-full bg-blue-500 bg-opacity-20 text-xs text-blue-200">#Сервис</span>
+          <span class="px-3 py-1 rounded-full bg-lime-500 bg-opacity-20 text-xs text-lime-200">#Техника</span>
+          <span class="px-3 py-1 rounded-full bg-cyan-400 bg-opacity-20 text-xs text-cyan-200">#Инновации</span>
+          <span class="px-3 py-1 rounded-full bg-orange-400 bg-opacity-20 text-xs text-orange-200">#Экология</span>
+          <span class="px-3 py-1 rounded-full bg-pink-400 bg-opacity-20 text-xs text-pink-200">#Доверие</span>
         </div>
-    </main>
-    
-    <!-- Scroll to Top Button -->
-    <a href="#" class="scroll-top" aria-label="Прокрутить наверх">
-        <i class="fas fa-arrow-up"></i>
-    </a>
-    
-    <!-- Print Version Button -->
-    <a href="/print" target="_blank" class="print-btn" aria-label="Версия для печати">
-        <i class="fas fa-print"></i>
-    </a>
-    
-    <!-- JavaScript Libraries -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    
-    <!-- Custom JavaScript -->
-    <script src="static/js/main.js"></script>
-    <script src="static/js/charts.js"></script>
+      </div>
+    </section>
+
+    <hr class="section-divider">
+
+    <!-- Раздел 2. Предложения по улучшению -->
+    <section id="section2" class="mb-12">
+      <h3 class="text-2xl font-semibold text-lime-300 mb-3 flex items-center"><i class="fas fa-lightbulb mr-2"></i>Предложения по улучшению онлайн-присутствия</h3>
+      <div class="grid md:grid-cols-2 gap-5">
+        <div class="interactive-card bg-gray-900 bg-opacity-90 rounded-xl p-5 shadow-lg border-l-4 border-blue-400 flex flex-col justify-between">
+          <div class="flex items-center space-x-3">
+            <i class="fas fa-globe fa-lg text-blue-300"></i>
+            <span class="font-semibold text-lg">SEO-оптимизация и локальное продвижение</span>
+          </div>
+          <ul class="mt-3 ml-2 text-sm text-gray-300 list-disc list-inside">
+            <li>Оптимизация страниц мастерских под локальные запросы (каждая — свой мини-лендинг)</li>
+            <li>Использование структурированных данных для карточек филиалов</li>
+          </ul>
+        </div>
+        <div class="interactive-card bg-gray-900 bg-opacity-90 rounded-xl p-5 shadow-lg border-l-4 border-green-400 flex flex-col justify-between">
+          <div class="flex items-center space-x-3">
+            <i class="fas fa-comment-alt fa-lg text-green-300"></i>
+            <span class="font-semibold text-lg">Единая система сбора отзывов</span>
+          </div>
+          <ul class="mt-3 ml-2 text-sm text-gray-300 list-disc list-inside">
+            <li>Обработка, агрегирование и отображение отзывов с разных платформ прямо на сайте</li>
+            <li>Быстрая публикация ответов от компании</li>
+          </ul>
+        </div>
+        <div class="interactive-card bg-gray-900 bg-opacity-90 rounded-xl p-5 shadow-lg border-l-4 border-cyan-400 flex flex-col justify-between">
+          <div class="flex items-center space-x-3">
+            <i class="fas fa-eye fa-lg text-cyan-300"></i>
+            <span class="font-semibold text-lg">Мультимедийный контент</span>
+          </div>
+          <ul class="mt-3 ml-2 text-sm text-gray-300 list-disc list-inside">
+            <li>Показ видео-инструкций «Как нас найти» для каждой мастерской</li>
+            <li>Интерактивные фото «до-после» ремонта</li>
+          </ul>
+        </div>
+        <div class="interactive-card bg-gray-900 bg-opacity-90 rounded-xl p-5 shadow-lg border-l-4 border-yellow-400 flex flex-col justify-between">
+          <div class="flex items-center space-x-3">
+            <i class="fas fa-robot fa-lg text-yellow-300"></i>
+            <span class="font-semibold text-lg">Интеграция нейросетевых решений</span>
+          </div>
+          <ul class="mt-3 ml-2 text-sm text-gray-300 list-disc list-inside">
+            <li>Автоматизация генерации FAQ и рекомендаций по ремонту с помощью ИИ</li>
+            <li>Генерация текстов для соцсетей / лендингов по ТЗ</li>
+          </ul>
+        </div>
+      </div>
+      <!-- Интерактивность: Accordion с деталями предлагаемых нововведений -->
+      <div class="mt-8">
+        <button id="showMoreBtn" class="transition bg-blue-700 text-white px-5 py-2 rounded-lg hover:bg-blue-600 text-base flex items-center space-x-2">
+          <span>Детальнее об автоматизации <i class="fas fa-chevron-down"></i></span>
+        </button>
+        <div id="moreDetails" class="mt-4 bg-gray-800 rounded-lg p-5 text-sm hidden">
+          <ul class="list-decimal ml-6">
+            <li>Использование скриптов для ежедневного сбора фидбека с Яндекс.Карт, Google Maps, 2ГИС.</li>
+            <li>Автоматизированное распределение фотографий и видео-видео-отзывов по филиалам.</li>
+            <li>Возможность предпросмотра и редактирования сгенерированного ИИ-контента непосредственно из интерфейса сайта.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <hr class="section-divider">
+
+    <!-- Раздел 3. Демонстрация компетенций -->
+    <section id="section3" class="mb-12">
+      <h3 class="text-2xl font-semibold text-cyan-300 mb-3 flex items-center"><i class="fas fa-user-cog mr-2"></i>Компетенции кандидата</h3>
+      <div class="grid md:grid-cols-2 gap-8">
+        <div class="bg-gray-900 bg-opacity-95 rounded-xl p-6 shadow-lg border-l-4 border-pink-400">
+          <h4 class="font-semibold text-lg text-pink-200 mb-2">Контент, фотошоп и визуал</h4>
+          <ul class="ml-2 text-sm text-gray-200 list-disc list-inside">
+            <li>Экспертное владение Photoshop и Canva, создание графики, обложек для постов и сторис</li>
+            <li>Обрезка, удаление фона, цветокоррекция, коллажи</li>
+            <li>Интерактивные элементы для лендингов (до/после, чек-листы, слайдеры)</li>
+          </ul>
+        </div>
+        <div class="bg-gray-900 bg-opacity-95 rounded-xl p-6 shadow-lg border-l-4 border-purple-400">
+          <h4 class="font-semibold text-lg text-purple-200 mb-2">SEO и аналитика</h4>
+          <ul class="ml-2 text-sm text-gray-200 list-disc list-inside">
+            <li>Глубокая оптимизация структуры сайта — быстрый индекс, микроданные филиалов</li>
+            <li>Семантический анализ, сравнительный мониторинг конкурентов</li>
+            <li>Автоматизируемый отчет по позициям и видимости сайта</li>
+          </ul>
+        </div>
+        <div class="bg-gray-900 bg-opacity-95 rounded-xl p-6 shadow-lg border-l-4 border-yellow-400">
+          <h4 class="font-semibold text-lg text-yellow-200 mb-2">ИИ и автоматизация</h4>
+          <ul class="ml-2 text-sm text-gray-200 list-disc list-inside">
+            <li>Создание и внедрение решения: «1 клик до публикации новости сети — из телеграм в блог»</li>
+            <li>Промт-инженерия (GPT, YandexGPT, Midjourney): оформление шаблонов для типовых задач</li>
+            <li>Автоматизация заполнения карточек услуг по филиалам</li>
+          </ul>
+        </div>
+        <div class="bg-gray-900 bg-opacity-95 rounded-xl p-6 shadow-lg border-l-4 border-cyan-400">
+          <h4 class="font-semibold text-lg text-cyan-200 mb-2">Web-разработка</h4>
+          <ul class="ml-2 text-sm text-gray-200 list-disc list-inside">
+            <li>Wordpress (верстка, шаблоны, плагины)</li>
+            <li>HTML, CSS, JS, визуальные редакторы (Tilda, Wix)</li>
+            <li>Внедрение кастомных элементов UI/UX (опросники, карточки отзывов, форма записи на ремонт)</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <hr class="section-divider">
+
+    <!-- Раздел 4. Примеры автоматизации -->
+    <section id="section4" class="mb-12">
+      <h3 class="text-2xl font-semibold text-blue-400 mb-3 flex items-center"><i class="fas fa-network-wired mr-2"></i>Автоматизация контента для сети из 31 мастерской</h3>
+      <div class="bg-gray-900 bg-opacity-90 rounded-xl p-6 shadow-xl mb-8 border border-blue-800">
+        <div class="grid md:grid-cols-2 gap-8 items-center">
+          <div>
+            <ul class="list-disc list-inside text-gray-200 text-base mb-2">
+              <li><span class="font-semibold text-blue-300">Массовая генерация контента</span> — обновление карточек филиалов по шаблонам через нейросети</li>
+              <li><span class="font-semibold text-blue-300">Интерактивное сравнение филиалов</span> — библиотека отзывов и рейтингов с визуализацией</li>
+              <li><span class="font-semibold text-blue-300">Обновление прайсов</span> — синхронизация таблиц Google Sheets с сайтами</li>
+              <li><span class="font-semibold text-blue-300">Мониторинг трендов</span> — автоматический анализ популярных услуг для расширения ассортимента</li>
+            </ul>
+            <div class="mt-5 space-y-3">
+              <button onclick="showModal('statsModal')" class="bg-blue-900 text-blue-200 hover:bg-blue-800 rounded px-4 py-2 transition flex items-center space-x-2 focus:outline-none"><i class="fas fa-chart-bar"></i> <span>Посмотреть аналитику филиалов</span></button>
+              <button onclick="showModal('promptModal')" class="bg-green-900 text-green-200 hover:bg-green-800 rounded px-4 py-2 transition flex items-center space-x-2 focus:outline-none"><i class="fas fa-robot"></i> <span>Пример промта для генерации страницы</span></button>
+            </div>
+          </div>
+          <div>
+            <canvas id="branchChart" width="320" height="220"></canvas>
+            <div id="branchLegend" class="chartjs-legend mt-3"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Модальные окна -->
+    <div id="statsModal" class="fixed z-40 inset-0 bg-black bg-opacity-80 hidden flex items-center justify-center">
+      <div class="bg-gray-900 rounded-xl px-8 py-8 w-full max-w-2xl relative">
+        <button onclick="closeModal('statsModal')" class="absolute top-3 right-4 text-gray-400 hover:text-blue-300 text-2xl focus:outline-none"><i class="fas fa-times"></i></button>
+        <h4 class="text-xl font-bold text-blue-300 mb-4 flex items-center"><i class="fas fa-chart-bar mr-2"></i> Пример анализа филиалов сети «ЛЕНРЕМОНТ»</h4>
+        <p class="mb-4 text-gray-200 text-sm">Обновляемая инфографика по количеству заказов, рейтингу и востребованности услуг для каждой мастерской. Возможна интеграция с Google Analytics, 1C или собственной CRM.</p>
+        <canvas id="modalBranchChart" width="520" height="200"></canvas>
+        <div id="modalBranchLegend" class="chartjs-legend mt-2"></div>
+      </div>
+    </div>
+
+    <div id="promptModal" class="fixed z-40 inset-0 bg-black bg-opacity-80 hidden flex items-center justify-center">
+      <div class="bg-gray-900 rounded-xl px-8 py-7 w-full max-w-lg relative">
+        <button onclick="closeModal('promptModal')" class="absolute top-3 right-4 text-gray-400 hover:text-green-300 text-2xl focus:outline-none"><i class="fas fa-times"></i></button>
+        <h4 class="text-xl font-bold text-green-300 mb-3 flex items-center"><i class="fas fa-robot mr-2"></i> Пример промта для нейросети</h4>
+        <div class="bg-gray-800 rounded-lg p-4 text-sm text-gray-200 font-mono whitespace-pre-line mb-2">
+{branch} – краткое описание по адресу, основные типы ремонта, доступные услуги и время работы.  
+Цифрами: актуальный рейтинг в Яндекс.Картах, количество отзывов, среднее время ремонта, индивидуальная особенность филиала.<br>
+Выводи это лаконично в блоке для сайта, язык — русский.
+        </div>
+        <p class="text-xs text-gray-400">← Такой промт позволяет быстро актуализировать страницы сети для поисковых систем и клиентов.</p>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="mt-20 sm:mt-32 mb-4 text-center text-gray-500 text-xs">
+      <span>© 2024 Кандидат на позицию контент-менеджера для ЛЕНРЕМОНТ | Разработано c заботой о деталях</span>
+    </footer>
+  </div>
+
+  <script>
+    // Simple modal logic
+    function showModal(id) {
+      document.getElementById(id).classList.remove('hidden');
+    }
+    function closeModal(id) {
+      document.getElementById(id).classList.add('hidden');
+    }
+
+    // ShowMore (accordion) logic
+    document.getElementById('showMoreBtn').addEventListener('click', function() {
+      var more = document.getElementById('moreDetails');
+      more.classList.toggle('hidden');
+      let span = this.querySelector('span');
+      if(more.classList.contains('hidden')) {
+        span.innerHTML = 'Детальнее об автоматизации <i class="fas fa-chevron-down"></i>';
+      } else {
+        span.innerHTML = 'Скрыть подробности <i class="fas fa-chevron-up"></i>';
+      }
+    });
+
+    // Chart.js – филиалы (main section)
+    const ctx = document.getElementById('branchChart').getContext('2d');
+    const branchChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['Петербург', 'Москва', 'Псков', 'В. Новгород', 'Др.'],
+        datasets: [
+          {
+            label: 'Число филиалов',
+            data: [24, 3, 2, 2, 0],
+            backgroundColor: [
+              '#13b0ebcc',
+              '#2ee59dcc',
+              '#9999fcc',
+              '#faa55dcc',
+              '#e0e0e0cc'
+            ]
+          }
+        ]
+      },
+      options: {
+        responsive: false,
+        plugins: {
+          legend: { display: false }
+        },
+        scales: {
+          x: { grid: { display: false }, ticks: { color: '#9df9ef' }},
+          y: { beginAtZero: true, grid: { display: false }, ticks: { color: '#51e2f5' }}
+        }
+      }
+    });
+    // Custom legend
+    document.getElementById('branchLegend').innerHTML = branchChart.generateLegend();
+
+    // Chart.js – филиалы (modal section, пример)
+    const modalCtx = document.getElementById('modalBranchChart').getContext('2d');
+    const modalBranchChart = new Chart(modalCtx, {
+      type: 'bar',
+      data: {
+        labels: ['Большевиков', 'Звёздная', 'Московская', 'Ветеранов', 'Пионерская'],
+        datasets: [
+          {
+            label: 'Рейтинг (5-ти балл.)',
+            data: [4.8, 4.7, 4.9, 4.8, 4.6],
+            backgroundColor: ['#13b0ebcc','#20e3b2cc','#fd7eb0cc','#e0ddfdcc','#faa55dcc']
+          },
+          {
+            label: 'Кол-во заказов в мес.',
+            data: [320, 288, 366, 305, 247],
+            backgroundColor: 'rgba(51, 226, 215, 0.2)',
+            borderColor: '#13b0eb',
+            type: 'line',
+            yAxisID: 'y1'
+          }
+        ]
+      },
+      options: {
+        responsive: false,
+        plugins: {
+          legend: { display: false }
+        },
+        scales: {
+          x: { grid: { display: false }, ticks: { color: '#fae0ff' }},
+          y: { beginAtZero: true, position: 'left', ticks: { color: '#fde0b4' }},
+          y1: { beginAtZero: true, position: 'right', grid: { drawOnChartArea: false }, ticks: { color: '#b0faee' }}
+        }
+      }
+    });
+    document.getElementById('modalBranchLegend').innerHTML = modalBranchChart.generateLegend();
+  </script>
 </body>
 </html>
